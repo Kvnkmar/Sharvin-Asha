@@ -33,7 +33,7 @@ export default function Hero({ guestName }) {
         {/* Couple names */}
         <div className="mb-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
           <h1 className="font-couple text-white leading-none" style={{ fontSize: 'clamp(3.75rem, 10vw, 7.5rem)' }}>
-            Sharvin Nair
+            Sharvin <span className="font-serif italic">N</span>air
           </h1>
           <div className="flex items-center justify-center gap-6 my-2">
             <span className="h-px w-16 bg-gold/50" />
@@ -41,7 +41,7 @@ export default function Hero({ guestName }) {
             <span className="h-px w-16 bg-gold/50" />
           </div>
           <h1 className="font-couple text-white leading-none" style={{ fontSize: 'clamp(3.75rem, 10vw, 7.5rem)' }}>
-            Asha
+            <span className="font-serif italic">A</span>sha
           </h1>
         </div>
 
