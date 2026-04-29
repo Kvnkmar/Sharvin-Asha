@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Great Vibes';
+  src: url('../assets/fonts/great-vibes/GreatVibes-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #FAF8F3;
+    color: #1A1A1A;
+    font-family: 'Jost', system-ui, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #C9A84C33;
+    color: #1A1A1A;
+  }
+}
+
+@layer components {
+  .gold-divider {
+    @apply flex items-center gap-4 my-8;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    @apply flex-1 h-px bg-gradient-to-r from-transparent via-gold to-transparent;
+  }
+
+  .section-label {
+    @apply font-sans text-xs tracking-ultra uppercase text-gold font-light;
+  }
+
+  .display-heading {
+    @apply font-serif text-charcoal leading-[0.9];
+  }
+
+  .gold-btn {
+    @apply inline-flex items-center justify-center px-10 py-4 border border-gold text-gold font-sans text-xs tracking-ultra uppercase font-light transition-all duration-500 hover:bg-gold hover:text-white relative overflow-hidden;
+  }
+
+  .gold-btn::before {
+    content: '';
+    @apply absolute inset-0 bg-gold translate-y-full transition-transform duration-500;
+  }
+
+  .gold-btn:hover::before {
+    @apply translate-y-0;
+  }
+
+  .gold-btn span {
+    @apply relative z-10 transition-colors duration-500;
+  }
+
+  .gold-btn:hover span {
+    @apply text-white;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 50%, #C9A84C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FAF8F3;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #C9A84C;
+    border-radius: 2px;
+  }
+}
+
+/* Ornament styles */
+.ornament {
+  color: #C9A84C;
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+  opacity: 0.7;
+}
+
+/* Parallax hero */
+.hero-bg {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .hero-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* Input focus styles */
+.wedding-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #C9A84C44;
+  border-radius: 0;
+  color: #1A1A1A;
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  padding: 12px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+  appearance: none;
+}
+
+.wedding-input:focus {
+  border-bottom-color: #C9A84C;
+}
+
+.wedding-input::placeholder {
+  color: #9B8B6E;
+  font-weight: 300;
+}
+
+.wedding-select {
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23C9A84C' stroke-width='1' fill='none'/%3E%3C/svg%3E") no-repeat right 4px center;
+  cursor: pointer;
+}
