@@ -7,7 +7,7 @@ function TimeUnit({ value, label }) {
   return (
     <div className="flex flex-col items-center">
       <div className="relative">
-        <span className="font-serif text-5xl md:text-7xl text-charcoal font-light tabular-nums leading-none">
+        <span className="font-subheading text-5xl md:text-7xl text-charcoal font-light tabular-nums leading-none">
           {String(value).padStart(2, '0')}
         </span>
         <div className="absolute -bottom-1 left-0 right-0 h-px bg-gold/30" />
@@ -49,9 +49,9 @@ export default function Countdown() {
           <p className="section-label mb-4" style={{ color: '#C9A84C' }}>
             {isPast ? 'We are married!' : 'Counting down to'}
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl text-white font-light mb-16">
+          <h2 className="font-display tracking-wide font-semibold uppercase text-4xl md:text-5xl text-white mb-16">
             {isPast ? 'Thank you for celebrating with us' : (
-              <>The <span className="italic text-gold">big day</span></>
+              <>The <span className="font-serif italic font-light text-gold normal-case">big day</span></>
             )}
           </h2>
         </div>

@@ -64,7 +64,7 @@ export default function RSVP({ guestName }) {
           <div className="fade-in">
             <span className="text-5xl block mb-8">✦</span>
             <p className="section-label mb-6">Thank you</p>
-            <h2 className="font-script text-gold text-6xl mb-6">See you there!</h2>
+            <h2 className="font-subheading text-gold text-5xl mb-6">See you there!</h2>
             <p className="font-serif text-charcoal/60 text-xl font-light leading-relaxed">
               Your RSVP has been received. We can't wait to celebrate with you.
             </p>
@@ -92,7 +92,7 @@ export default function RSVP({ guestName }) {
         <div className="text-center mb-20 fade-up">
           <p className="section-label mb-6">Kindly Reply By May 15, 2025</p>
           <h2 className="display-heading text-5xl md:text-6xl mb-6">
-            Will you <span className="font-serif italic font-light text-gold">join us?</span>
+            Will you <span className="font-serif italic font-light text-gold normal-case">join us?</span>
           </h2>
           <p className="font-serif text-charcoal/50 text-lg font-light italic">
             Your presence is the greatest gift

@@ -18,11 +18,14 @@ export default {
         'warm-white': '#FEFDFB',
       },
       fontFamily: {
-        serif: ['"Tangerine"', 'cursive'],
-        'serif-italic': ['"Tangerine"', 'cursive'],
-        sans: ['"Tangerine"', 'cursive'],
+        display: ['"Cinzel"', 'serif'],
+        subheading: ['"Marcellus"', 'serif'],
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        'serif-italic': ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['"Jost"', 'system-ui', 'sans-serif'],
+        accent: ['"Tangerine"', 'cursive'],
+        couple: ['"Cinzel"', 'serif'],
         script: ['"Tangerine"', 'cursive'],
-        couple: ['"Tangerine"', 'cursive'],
       },
       letterSpacing: {
         'ultra': '0.25em',

@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
 
       <div className="max-w-xl mx-auto px-6">
-        <h2 className="font-couple text-gold text-6xl mb-4">Sharvin Nair & Asha</h2>
+        <h2 className="font-display tracking-wider font-semibold uppercase text-gold text-3xl md:text-4xl mb-4">Sharvin Nair &amp; Asha</h2>
         <p className="font-sans text-xs tracking-ultra uppercase text-white/30 font-light mb-8">
           21 · June · 2025
         </p>

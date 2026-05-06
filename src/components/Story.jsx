@@ -34,7 +34,7 @@ export default function Story() {
             <p className="section-label mb-6">Our Story</p>
             <h2 className="display-heading text-5xl md:text-6xl mb-8">
               Two souls,<br />
-              <span className="font-serif italic font-light text-gold">one journey</span>
+              <span className="font-serif italic font-light text-gold normal-case">one journey</span>
             </h2>
 
             <div className="space-y-5 text-charcoal/70 font-serif text-lg font-light leading-relaxed">

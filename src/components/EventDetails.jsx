@@ -34,7 +34,7 @@ function EventCard({ event, index }) {
           </div>
 
           <p className="section-label mb-3">Event {String(event.id)}</p>
-          <h3 className="font-serif text-3xl md:text-4xl text-charcoal font-light mb-8">
+          <h3 className="font-subheading text-3xl md:text-4xl text-charcoal font-light mb-8">
             {event.title}
           </h3>
 
@@ -94,7 +94,7 @@ export default function EventDetails() {
         <div className="text-center mb-20 fade-up">
           <p className="section-label mb-6">Save the Date</p>
           <h2 className="display-heading text-5xl md:text-6xl mb-6">
-            When &amp; <span className="font-serif italic font-light text-gold">Where</span>
+            When &amp; <span className="font-serif italic font-light text-gold normal-case">Where</span>
           </h2>
           <p className="font-serif text-charcoal/50 text-xl font-light italic">
             Saturday, the 21st of June, 2025
