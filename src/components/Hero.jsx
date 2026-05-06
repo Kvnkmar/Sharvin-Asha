@@ -1,6 +1,9 @@
 import heroPhoto from '../assets/DSC06915.jpg'
 import './Hero.css'
 
+const MANDALA_SPOKES = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5]
+const MANDALA_PETALS = [0, 45, 90, 135, 180, 225, 270, 315]
+
 export default function Hero({ guestName }) {
   return (
     <section id="hero" className="hero">
@@ -11,6 +14,37 @@ export default function Hero({ guestName }) {
       />
       <div className="hero__overlay" aria-hidden="true" />
 
+      <svg className="hero__mandala" viewBox="0 0 400 400" aria-hidden="true">
+        <g fill="none" stroke="#D4AF37" strokeWidth="0.4">
+          <circle cx="200" cy="200" r="190" />
+          <circle cx="200" cy="200" r="155" />
+          <circle cx="200" cy="200" r="115" />
+          <circle cx="200" cy="200" r="75" />
+          <circle cx="200" cy="200" r="35" />
+          <g transform="translate(200,200)">
+            {MANDALA_SPOKES.map((deg) => (
+              <line
+                key={`spoke-${deg}`}
+                x1="0"
+                y1="-190"
+                x2="0"
+                y2="190"
+                transform={`rotate(${deg})`}
+              />
+            ))}
+          </g>
+          <g transform="translate(200,200)">
+            {MANDALA_PETALS.map((deg) => (
+              <path
+                key={`petal-${deg}`}
+                d="M0,-155 Q35,-115 0,-75 Q-35,-115 0,-155 Z"
+                transform={`rotate(${deg})`}
+              />
+            ))}
+          </g>
+        </g>
+      </svg>
+
       <div className="hero__corner hero__corner--tl" aria-hidden="true" />
       <div className="hero__corner hero__corner--tr" aria-hidden="true" />
       <div className="hero__corner hero__corner--bl" aria-hidden="true" />
@@ -19,8 +53,8 @@ export default function Hero({ guestName }) {
       <div className="hero__content">
         <p className="hero__eyebrow">Together with their families</p>
 
-        <h1 className="hero__names">
-          <span className="hero__name">Sharvin Nair</span>
+        <h1 className="hero__title">
+          <span className="hero__name">Sharvin</span>
           <span className="hero__amp" aria-hidden="true">&amp;</span>
           <span className="hero__name">Asha</span>
         </h1>
@@ -39,10 +73,13 @@ export default function Hero({ guestName }) {
           <span className="hero__line" />
         </div>
 
-        <p className="hero__date">
-          The Twenty-First of June, Two Thousand Twenty-Five
+        <p className="hero__invitation">
+          Request the honour of your presence
         </p>
-        <p className="hero__location">Kuala Lumpur &middot; Malaysia</p>
+
+        <p className="hero__details">
+          21 June 2025 &bull; 10:00 AM &bull; Sri Mahamariamman Temple
+        </p>
 
         {guestName && (
           <p className="hero__guest">Dear {guestName}, you are invited</p>
