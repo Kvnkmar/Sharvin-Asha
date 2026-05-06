@@ -22,7 +22,7 @@ export default {
         'serif-italic': ['"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['"Jost"', 'system-ui', 'sans-serif'],
         script: ['"Great Vibes"', 'cursive'],
-        couple: ['"Allura"', 'cursive'],
+        couple: ['"Tangerine"', 'cursive'],
       },
       letterSpacing: {
         'ultra': '0.25em',
