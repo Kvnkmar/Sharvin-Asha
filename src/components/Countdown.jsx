@@ -49,7 +49,7 @@ export default function Countdown() {
           <p className="section-label mb-4" style={{ color: '#C9A84C' }}>
             {isPast ? 'We are married!' : 'Counting down to'}
           </p>
-          <h2 className="font-display tracking-wide font-semibold uppercase text-4xl md:text-5xl text-white mb-16">
+          <h2 className="font-display text-5xl md:text-6xl text-white mb-16">
             {isPast ? 'Thank you for celebrating with us' : (
               <>The <span className="font-serif italic font-light text-gold normal-case">big day</span></>
             )}

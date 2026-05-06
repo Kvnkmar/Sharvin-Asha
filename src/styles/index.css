@@ -54,7 +54,7 @@
   }
 
   .display-heading {
-    @apply font-display text-charcoal leading-[0.9] tracking-wide font-semibold uppercase;
+    @apply font-display text-charcoal leading-[0.9];
   }
 
   .gold-btn {

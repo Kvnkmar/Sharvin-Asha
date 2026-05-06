@@ -18,7 +18,7 @@ export default {
         'warm-white': '#FEFDFB',
       },
       fontFamily: {
-        display: ['"Cinzel"', 'serif'],
+        display: ['"Tangerine"', 'cursive'],
         subheading: ['"Marcellus"', 'serif'],
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         'serif-italic': ['"Cormorant Garamond"', 'Georgia', 'serif'],
