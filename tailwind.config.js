@@ -18,10 +18,10 @@ export default {
         'warm-white': '#FEFDFB',
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        'serif-italic': ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['"Jost"', 'system-ui', 'sans-serif'],
-        script: ['"Great Vibes"', 'cursive'],
+        serif: ['"Tangerine"', 'cursive'],
+        'serif-italic': ['"Tangerine"', 'cursive'],
+        sans: ['"Tangerine"', 'cursive'],
+        script: ['"Tangerine"', 'cursive'],
         couple: ['"Tangerine"', 'cursive'],
       },
       letterSpacing: {
