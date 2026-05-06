@@ -1,84 +1,90 @@
 import heroPhoto from '../assets/DSC06915.jpg'
+import './Hero.css'
+
+const MANDALA_SPOKES = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5]
+const MANDALA_PETALS = [0, 45, 90, 135, 180, 225, 270, 315]
 
 export default function Hero({ guestName }) {
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-    >
-      {/* Background image with overlay */}
+    <section id="hero" className="hero">
       <div
-        className="absolute inset-0 hero-bg"
-        style={{ backgroundImage: `url(${heroPhoto})`, backgroundPosition: 'center 12%' }}
+        className="hero__bg"
+        style={{ backgroundImage: `url(${heroPhoto})` }}
+        aria-hidden="true"
       />
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal/80" />
+      <div className="hero__overlay" aria-hidden="true" />
 
-      {/* Gold vignette top */}
-      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-charcoal/40 to-transparent" />
+      <svg className="hero__mandala" viewBox="0 0 400 400" aria-hidden="true">
+        <g fill="none" stroke="#D4AF37" strokeWidth="0.4">
+          <circle cx="200" cy="200" r="190" />
+          <circle cx="200" cy="200" r="155" />
+          <circle cx="200" cy="200" r="115" />
+          <circle cx="200" cy="200" r="75" />
+          <circle cx="200" cy="200" r="35" />
+          <g transform="translate(200,200)">
+            {MANDALA_SPOKES.map((deg) => (
+              <line
+                key={`spoke-${deg}`}
+                x1="0"
+                y1="-190"
+                x2="0"
+                y2="190"
+                transform={`rotate(${deg})`}
+              />
+            ))}
+          </g>
+          <g transform="translate(200,200)">
+            {MANDALA_PETALS.map((deg) => (
+              <path
+                key={`petal-${deg}`}
+                d="M0,-155 Q35,-115 0,-75 Q-35,-115 0,-155 Z"
+                transform={`rotate(${deg})`}
+              />
+            ))}
+          </g>
+        </g>
+      </svg>
 
-      {/* Decorative corner ornaments */}
-      <div className="absolute top-24 left-8 text-gold/30 font-serif text-6xl leading-none hidden md:block">✦</div>
-      <div className="absolute top-24 right-8 text-gold/30 font-serif text-6xl leading-none hidden md:block">✦</div>
+      <div className="hero__corner hero__corner--tl" aria-hidden="true" />
+      <div className="hero__corner hero__corner--tr" aria-hidden="true" />
+      <div className="hero__corner hero__corner--bl" aria-hidden="true" />
+      <div className="hero__corner hero__corner--br" aria-hidden="true" />
 
-      {/* Center content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        {/* Top label */}
-        <div className="mb-10 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <p className="font-sans text-xs tracking-wide-xl uppercase text-gold/80 font-light">
-            Together with their families
-          </p>
+      <div className="hero__content">
+        <p className="hero__eyebrow">Together with their families</p>
+
+        <h1 className="hero__names">
+          <span className="hero__name">Sharvin Nair</span>
+          <span className="hero__amp" aria-hidden="true">&amp;</span>
+          <span className="hero__name">Asha</span>
+        </h1>
+
+        <div className="hero__ornament" aria-hidden="true">
+          <span className="hero__line" />
+          <svg viewBox="0 0 24 24" className="hero__diamond">
+            <path
+              d="M12 2 L22 12 L12 22 L2 12 Z"
+              fill="none"
+              stroke="#D4AF37"
+              strokeWidth="1"
+            />
+            <circle cx="12" cy="12" r="2" fill="#D4AF37" />
+          </svg>
+          <span className="hero__line" />
         </div>
 
-        {/* Couple names */}
-        <div className="mb-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
-          <h1 className="font-display text-white leading-none" style={{ fontSize: 'clamp(5rem, 14vw, 11rem)' }}>
-            Sharvin Nair
-          </h1>
-          <div className="flex items-center justify-center gap-6 my-4">
-            <span className="h-px w-16 bg-gold/50" />
-            <span className="font-accent text-gold/80 leading-none italic" style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)' }}>&amp;</span>
-            <span className="h-px w-16 bg-gold/50" />
-          </div>
-          <h1 className="font-display text-white leading-none" style={{ fontSize: 'clamp(5rem, 14vw, 11rem)' }}>
-            Asha
-          </h1>
-        </div>
+        <p className="hero__date">
+          The Twenty-First of June, Two Thousand Twenty-Five
+        </p>
+        <p className="hero__location">Kuala Lumpur &middot; Malaysia</p>
 
-        {/* Date */}
-        <div className="animate-fade-in mb-10" style={{ animationDelay: '0.8s' }}>
-          <p className="font-serif text-white/80 text-xl font-light italic">
-            The Twenty-First of June, Two Thousand Twenty-Five
-          </p>
-          <p className="font-sans text-xs tracking-ultra uppercase text-gold/60 mt-2 font-light">
-            Kuala Lumpur, Malaysia
-          </p>
-        </div>
-
-        {/* Guest name if provided */}
         {guestName && (
-          <div className="animate-fade-in mb-8" style={{ animationDelay: '1s' }}>
-            <p className="font-serif text-gold-light text-lg italic">
-              Dear {guestName}, you are invited
-            </p>
-          </div>
+          <p className="hero__guest">Dear {guestName}, you are invited</p>
         )}
 
-        {/* CTA */}
-        <div className="animate-fade-in" style={{ animationDelay: '1.1s' }}>
-          <a
-            href="#rsvp"
-            className="inline-flex items-center gap-3 border border-white/30 text-white font-sans text-xs tracking-ultra uppercase font-light px-10 py-4 hover:border-gold hover:text-gold transition-all duration-500"
-          >
-            <span>Kindly RSVP</span>
-          </a>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-float">
-        <span className="font-sans text-xs tracking-ultra uppercase text-white/40 font-light">Scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-white/40 to-transparent" />
+        <a href="#rsvp" className="hero__cta">
+          Kindly RSVP
+        </a>
       </div>
     </section>
   )
