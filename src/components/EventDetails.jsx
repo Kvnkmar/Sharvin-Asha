@@ -107,7 +107,7 @@ export default function EventDetails() {
         <div className="text-center mb-20 fade-up">
           <p className="section-label mb-6">Save the Date</p>
           <h2 className="display-heading text-5xl md:text-6xl mb-6">
-            When &amp; <span className="font-serif italic font-light text-gold normal-case">Where</span>
+            When &amp; <span className="font-script font-light text-gold normal-case">Where</span>
           </h2>
           <p className="font-serif text-charcoal/50 text-xl font-light italic">
             Sunday, the 13th of September, 2026

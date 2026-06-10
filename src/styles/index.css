@@ -54,7 +54,7 @@
   }
 
   .display-heading {
-    @apply font-display text-charcoal leading-[0.9];
+    @apply font-display text-charcoal leading-[1.15];
   }
 
   .gold-btn {

@@ -44,7 +44,7 @@ export default function Family() {
           <p className="section-label mb-6">With Our Families&rsquo; Blessings</p>
           <h2 className="display-heading text-5xl md:text-6xl mb-6">
             Two Families,{' '}
-            <span className="font-serif italic font-light text-gold normal-case">One Union</span>
+            <span className="font-script font-light text-gold normal-case">One Union</span>
           </h2>
           <p className="font-serif text-charcoal/50 text-xl font-light italic">
             United in love and tradition

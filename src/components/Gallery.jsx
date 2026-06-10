@@ -65,7 +65,7 @@ export default function Gallery() {
         <div className="text-center mb-20 fade-up">
           <p className="section-label mb-6" style={{ color: '#C9A84C' }}>Captured Moments</p>
           <h2 className="display-heading text-5xl md:text-6xl text-white mb-4">
-            Our <span className="font-serif italic font-light text-gold normal-case">Gallery</span>
+            Our <span className="font-script font-light text-gold normal-case">Gallery</span>
           </h2>
           <p className="font-serif text-white/40 text-xl font-light italic">
             A glimpse into our love story

@@ -18,8 +18,8 @@ export default {
         'warm-white': '#FEFDFB',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        subheading: ['"Marcellus"', 'serif'],
+        display: ['"Great Vibes"', 'cursive'],
+        subheading: ['"Great Vibes"', 'cursive'],
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         'serif-italic': ['"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['"Jost"', 'system-ui', 'sans-serif'],
