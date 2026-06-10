@@ -33,7 +33,7 @@ export default function Countdown() {
   const isPast = timeLeft.total <= 0
 
   return (
-    <section className="py-28 bg-charcoal relative overflow-hidden">
+    <section id="countdown" className="py-28 bg-charcoal relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
