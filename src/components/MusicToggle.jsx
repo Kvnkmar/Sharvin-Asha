@@ -14,21 +14,61 @@ export default function MusicToggle() {
     return () => clearTimeout(t)
   }, [])
 
-  const toggle = async () => {
-    if (!audioRef.current) return
+  // Start the song as soon as the site loads. Browsers block audio autoplay
+  // until the visitor interacts with the page, so if the initial attempt is
+  // rejected we retry on the first gesture anywhere (scroll/click/key/touch).
+  useEffect(() => {
+    let started = false
 
-    if (playing) {
-      audioRef.current.pause()
-      setPlaying(false)
+    const start = async () => {
+      const audio = audioRef.current
+      if (started || !audio) return
+      try {
+        await audio.play()
+        started = true
+        removeListeners()
+      } catch {
+        // Autoplay blocked — keep listeners attached and wait for a gesture.
+      }
+    }
+
+    const onGesture = (e) => {
+      // Let the toggle button manage its own playback.
+      if (e.target?.closest?.('[data-music-toggle]')) return
+      start()
+    }
+
+    const opts = { passive: true }
+    const removeListeners = () => {
+      window.removeEventListener('pointerdown', onGesture, opts)
+      window.removeEventListener('keydown', onGesture, opts)
+      window.removeEventListener('scroll', onGesture, opts)
+      window.removeEventListener('touchstart', onGesture, opts)
+    }
+
+    window.addEventListener('pointerdown', onGesture, opts)
+    window.addEventListener('keydown', onGesture, opts)
+    window.addEventListener('scroll', onGesture, opts)
+    window.addEventListener('touchstart', onGesture, opts)
+
+    start() // attempt immediate autoplay on load
+
+    return removeListeners
+  }, [])
+
+  const toggle = async () => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    if (!audio.paused) {
+      audio.pause()
       return
     }
 
     try {
-      await audioRef.current.play()
-      setPlaying(true)
+      await audio.play()
       setUnavailable(false)
     } catch {
-      setPlaying(false)
       setUnavailable(true)
     }
   }
@@ -39,13 +79,17 @@ export default function MusicToggle() {
         ref={audioRef}
         src={weddingSong}
         loop
-        preload="none"
+        preload="auto"
         onPause={() => setPlaying(false)}
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setPlaying(true)
+          setUnavailable(false)
+        }}
         onError={() => setUnavailable(true)}
       />
 
       <button
+        data-music-toggle
         onClick={toggle}
         className={`fixed bottom-8 right-8 z-40 w-12 h-12 border border-gold/40 bg-transparent backdrop-blur-[1px] flex items-center justify-center transition-all duration-700 hover:border-gold hover:bg-charcoal/20 ${
           visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'

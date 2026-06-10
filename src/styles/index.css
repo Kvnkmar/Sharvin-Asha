@@ -80,8 +80,9 @@
 
   .fade-up {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.9s ease, transform 0.9s ease;
+    transform: translateY(28px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .fade-up.visible {
@@ -91,11 +92,19 @@
 
   .fade-in {
     opacity: 0;
-    transition: opacity 1.2s ease;
+    transition: opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .fade-in.visible {
     opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up,
+    .fade-in {
+      transition-duration: 0.001s;
+      transform: none;
+    }
   }
 }
 

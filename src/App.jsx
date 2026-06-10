@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useScrollAnimation } from './utils/hooks'
 
 import Navbar from './components/Navbar'
@@ -22,25 +21,6 @@ export default function App() {
   useScrollAnimation()
 
   const guestName = getGuestName()
-
-  // Re-run observer whenever DOM updates
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible')
-          }
-        })
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    )
-
-    const elements = document.querySelectorAll('.fade-up, .fade-in')
-    elements.forEach((el) => observer.observe(el))
-
-    return () => observer.disconnect()
-  })
 
   return (
     <div className="min-h-screen">
