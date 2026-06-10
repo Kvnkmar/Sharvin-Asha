@@ -1,9 +1,12 @@
 const events = [
   {
     id: 'ceremony',
-    icon: '\uD83D\uDC8D',
+    label: 'The Ceremony',
     title: 'Wedding Ceremony',
-    time: '10:00 AM \u2013 12:00 PM',
+    weekday: 'Sunday',
+    day: '13',
+    monthYear: 'September 2026',
+    time: '10:00 AM – 12:00 PM',
     duration: 'Morning celebration',
     venue: "D'Raksh Golden Ballroom",
     address:
@@ -16,66 +19,135 @@ const events = [
   },
 ]
 
+function RingsOrnament() {
+  return (
+    <svg
+      viewBox="0 0 70 44"
+      className="w-16 h-10 mx-auto"
+      fill="none"
+      stroke="#C9A84C"
+      strokeWidth="1.3"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="27" cy="26" r="13.5" />
+      <circle cx="43" cy="26" r="13.5" />
+      <path d="M27 11.5 L30.5 16 L27 20 L23.5 16 Z" fill="#C9A84C" stroke="none" />
+    </svg>
+  )
+}
+
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 21c4-4.6 6.5-8.1 6.5-11A6.5 6.5 0 0 0 5.5 10c0 2.9 2.5 6.4 6.5 11z" />
+      <circle cx="12" cy="10" r="2.3" />
+    </svg>
+  )
+}
+
+function NoteIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5" />
+      <path d="M12 7.6h.01" />
+    </svg>
+  )
+}
+
+function DetailRow({ icon, label, children }) {
+  return (
+    <div className="flex gap-4 text-left">
+      <span className="text-gold/70 shrink-0 mt-1">{icon}</span>
+      <div>
+        <p className="font-sans text-[0.65rem] tracking-ultra uppercase text-gold/60 font-light mb-1.5">
+          {label}
+        </p>
+        {children}
+      </div>
+    </div>
+  )
+}
+
 function EventCard({ event, index }) {
   return (
     <div
-      className="fade-up group relative"
+      className="fade-up relative"
       style={{ transitionDelay: `${index * 0.15}s` }}
     >
-      <div className="border border-gold/20 p-10 md:p-14 relative overflow-hidden hover:border-gold/50 transition-colors duration-500 bg-white">
-        {/* Background hover fill */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="relative bg-white border border-gold/30 shadow-[0_30px_70px_-35px_rgba(160,120,48,0.45)]">
+        {/* Inset hairline frame */}
+        <span className="pointer-events-none absolute inset-[10px] border border-gold/15" />
 
-        {/* Top left decorative corner */}
-        <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-gold/40" />
-        <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-gold/40" />
+        {/* Corner accents */}
+        <span className="pointer-events-none absolute -top-px -left-px w-9 h-9 border-t border-l border-gold/60" />
+        <span className="pointer-events-none absolute -top-px -right-px w-9 h-9 border-t border-r border-gold/60" />
+        <span className="pointer-events-none absolute -bottom-px -left-px w-9 h-9 border-b border-l border-gold/60" />
+        <span className="pointer-events-none absolute -bottom-px -right-px w-9 h-9 border-b border-r border-gold/60" />
 
-        <div className="relative z-10">
-          {/* Icon & label */}
-          <div className="flex items-center gap-4 mb-8">
-            <span className="text-2xl">{event.icon}</span>
-            <div className="h-px flex-1 bg-gold/20" />
+        <div className="relative px-8 py-14 md:px-16 md:py-16">
+          {/* Header */}
+          <div className="text-center">
+            <RingsOrnament />
+            <p className="section-label mt-6 mb-3">{event.label}</p>
+            <h3 className="font-script text-4xl md:text-5xl text-charcoal font-light leading-tight">
+              {event.title}
+            </h3>
           </div>
 
-          <p className="section-label mb-3">Event {String(event.id)}</p>
-          <h3 className="font-subheading text-3xl md:text-4xl text-charcoal font-light mb-8">
-            {event.title}
-          </h3>
+          {/* Ornamental divider */}
+          <div className="gold-divider w-44 mx-auto">
+            <svg viewBox="0 0 24 24" className="w-3 h-3 text-gold shrink-0" fill="currentColor" aria-hidden="true">
+              <path d="M12 2 L20 12 L12 22 L4 12 Z" />
+            </svg>
+          </div>
 
-          <div className="space-y-5 mb-8">
-            <div className="flex items-start gap-5">
-              <span className="font-sans text-xs tracking-ultra uppercase text-gold/60 font-light pt-0.5 w-20 shrink-0">
-                Time
+          {/* Date focal point */}
+          <div className="flex items-stretch justify-center text-center">
+            <div className="flex flex-col justify-center pr-5 md:pr-7">
+              <span className="font-sans text-[0.7rem] tracking-ultra uppercase text-gold/70 font-light">
+                {event.weekday}
               </span>
-              <div>
-                <p className="font-serif text-xl text-charcoal font-light">{event.time}</p>
-                <p className="font-sans text-xs text-charcoal/40 mt-1">{event.duration}</p>
-              </div>
             </div>
-
-            <div className="flex items-start gap-5">
-              <span className="font-sans text-xs tracking-ultra uppercase text-gold/60 font-light pt-0.5 w-20 shrink-0">
-                Venue
+            <div className="flex flex-col items-center justify-center px-5 md:px-7 border-x border-gold/25">
+              <span className="font-serif text-6xl md:text-7xl text-gold font-light leading-none">
+                {event.day}
               </span>
-              <p className="font-serif text-xl text-charcoal font-light">{event.venue}</p>
             </div>
-
-            <div className="flex items-start gap-5">
-              <span className="font-sans text-xs tracking-ultra uppercase text-gold/60 font-light pt-0.5 w-20 shrink-0">
-                Address
+            <div className="flex flex-col justify-center pl-5 md:pl-7">
+              <span className="font-sans text-[0.7rem] tracking-ultra uppercase text-gold/70 font-light">
+                {event.monthYear}
               </span>
-              <p className="font-serif text-charcoal/70 font-light leading-relaxed">{event.address}</p>
-            </div>
-
-            <div className="flex items-start gap-5">
-              <span className="font-sans text-xs tracking-ultra uppercase text-gold/60 font-light pt-0.5 w-20 shrink-0">
-                Note
-              </span>
-              <p className="font-serif italic text-charcoal/60 font-light">{event.note}</p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-2">
+          {/* Time */}
+          <div className="text-center mt-6">
+            <p className="font-serif text-xl md:text-2xl text-charcoal font-light tracking-wide">
+              {event.time}
+            </p>
+            <p className="font-sans text-xs text-charcoal/40 mt-1.5">{event.duration}</p>
+          </div>
+
+          {/* Details */}
+          <div className="mt-12 space-y-6 max-w-md mx-auto">
+            <DetailRow icon={<PinIcon />} label="Venue">
+              <p className="font-serif text-lg text-charcoal font-light">{event.venue}</p>
+              <p className="font-serif text-charcoal/60 font-light leading-relaxed mt-1.5">
+                {event.address}
+              </p>
+            </DetailRow>
+
+            <DetailRow icon={<NoteIcon />} label="Good to know">
+              <p className="font-serif italic text-charcoal/60 font-light leading-relaxed">
+                {event.note}
+              </p>
+            </DetailRow>
+          </div>
+
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-12 max-w-md mx-auto">
             <a
               href={event.mapLink}
               target="_blank"

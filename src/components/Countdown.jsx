@@ -57,19 +57,19 @@ export default function Countdown() {
         </div>
 
         {!isPast && (
-          <div className="fade-up grid grid-cols-4 gap-4 md:gap-12 max-w-2xl mx-auto">
+          <div className="fade-up grid grid-cols-2 gap-x-8 gap-y-12 sm:gap-x-12 md:flex md:items-start md:justify-center md:gap-x-8 lg:gap-x-12 max-w-2xl mx-auto">
             <TimeUnit value={timeLeft.days} label="Days" />
 
             {/* Separator */}
-            <div className="hidden md:flex items-center justify-center text-gold/40 font-serif text-4xl -mx-6">:</div>
+            <span className="hidden md:block font-serif text-5xl text-gold/40 leading-none pt-5 select-none">:</span>
 
             <TimeUnit value={timeLeft.hours} label="Hours" />
 
-            <div className="hidden md:flex items-center justify-center text-gold/40 font-serif text-4xl -mx-6">:</div>
+            <span className="hidden md:block font-serif text-5xl text-gold/40 leading-none pt-5 select-none">:</span>
 
             <TimeUnit value={timeLeft.minutes} label="Minutes" />
 
-            <div className="hidden md:flex items-center justify-center text-gold/40 font-serif text-4xl -mx-6">:</div>
+            <span className="hidden md:block font-serif text-5xl text-gold/40 leading-none pt-5 select-none">:</span>
 
             <TimeUnit value={timeLeft.seconds} label="Seconds" />
           </div>

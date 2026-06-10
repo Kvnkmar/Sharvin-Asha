@@ -47,9 +47,9 @@ export default function App() {
       <Navbar />
       <Hero guestName={guestName} />
       <Story />
+      <Family />
       <Countdown />
       <EventDetails />
-      <Family />
       <Gallery />
       <RSVP guestName={guestName} />
       <Footer />
