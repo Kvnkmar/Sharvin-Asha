@@ -207,22 +207,22 @@
    from the top. `both` keeps it hidden through the delay so there's no flash
    of settled content before the reveal begins. */
 .hero--entered .hero__content {
-  animation: heroRevealFromTop 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+  animation: heroRevealFromTop 2.8s ease-in-out 0.7s both;
 }
 
 @keyframes heroRevealFromTop {
-  from { opacity: 0; transform: translateY(-55px); }
+  from { opacity: 0; transform: translateY(-24px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* The background image settles in from the top just ahead of the text. The
    slight scale keeps it covering the frame while it drifts down (no edge gap). */
 .hero--entered .hero__bg {
-  animation: heroBgReveal 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+  animation: heroBgReveal 3.2s ease-in-out 0.4s both;
 }
 
 @keyframes heroBgReveal {
-  from { opacity: 0; transform: translateY(-30px) scale(1.08); }
+  from { opacity: 0; transform: translateY(-16px) scale(1.05); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
