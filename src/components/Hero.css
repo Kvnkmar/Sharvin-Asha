@@ -203,6 +203,18 @@
   to { opacity: 0.85; }
 }
 
+/* When the entry doors open, the whole hero content descends and fades in
+   from the top. `both` keeps it hidden through the delay so there's no flash
+   of settled content before the reveal begins. */
+.hero--entered .hero__content {
+  animation: heroRevealFromTop 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+@keyframes heroRevealFromTop {
+  from { opacity: 0; transform: translateY(-55px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 640px) {
   .hero__corner {
     width: 36px;

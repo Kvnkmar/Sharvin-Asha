@@ -7,9 +7,9 @@ const heroPhoto = `${import.meta.env.BASE_URL}hero.jpg`
 const MANDALA_SPOKES = [0, 22.5, 45, 67.5, 90, 112.5, 135, 157.5]
 const MANDALA_PETALS = [0, 45, 90, 135, 180, 225, 270, 315]
 
-export default function Hero({ guestName }) {
+export default function Hero({ guestName, entered }) {
   return (
-    <section id="hero" className="hero">
+    <section id="hero" className={`hero ${entered ? 'hero--entered' : ''}`}>
       <div
         className="hero__bg"
         style={{ backgroundImage: `url(${heroPhoto})` }}

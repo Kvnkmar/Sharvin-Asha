@@ -49,7 +49,7 @@ export default function App() {
       <EntryOverlay open={!entered} onEnter={handleEnter} />
 
       <Navbar />
-      <Hero guestName={guestName} />
+      <Hero guestName={guestName} entered={entered} />
       <Story />
       <Family />
       <Countdown />
