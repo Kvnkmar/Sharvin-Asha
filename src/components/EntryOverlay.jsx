@@ -3,8 +3,8 @@ import './EntryOverlay.css'
 
 // Full-screen welcome gate. Its purpose is twofold: set the tone on arrival,
 // and — crucially — capture the visitor's first gesture (the tap to enter),
-// which is what browsers require before audio is allowed to play. Without this
-// the song stays silent until the visitor happens to click/scroll on their own.
+// which is what browsers require before audio is allowed to play. On entry the
+// screen parts like a pair of doors to reveal the site beneath.
 export default function EntryOverlay({ open, onEnter }) {
   const btnRef = useRef(null)
 
@@ -22,6 +22,10 @@ export default function EntryOverlay({ open, onEnter }) {
       aria-hidden={open ? undefined : true}
       onClick={onEnter}
     >
+      {/* The two halves that part to reveal the site */}
+      <div className="entry__panel entry__panel--left" aria-hidden="true" />
+      <div className="entry__panel entry__panel--right" aria-hidden="true" />
+
       <span className="entry__corner entry__corner--tl" aria-hidden="true" />
       <span className="entry__corner entry__corner--tr" aria-hidden="true" />
       <span className="entry__corner entry__corner--bl" aria-hidden="true" />

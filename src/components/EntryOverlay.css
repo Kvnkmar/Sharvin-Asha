@@ -7,53 +7,76 @@
   justify-content: center;
   text-align: center;
   padding: 1.5rem;
+  overflow: hidden;
   cursor: pointer;
-  background:
-    radial-gradient(ellipse at center, rgba(40, 14, 20, 0.6) 0%, rgba(10, 4, 6, 0.96) 70%),
-    #0a0406;
   color: #F8F4EC;
-  opacity: 1;
-  transform: scale(1);
-  transition:
-    opacity 1.9s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.9s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 1.9s;
+  /* The container itself is transparent — the two panels provide the cover,
+     so the site shows through the centre as they part. */
 }
 
-/* On entry the veil zooms forward and dissolves — as if the camera pushes
-   through it into the site. Kept mounted so the transition can play out. */
+/* Once entered: stop intercepting clicks immediately, and only flip to
+   visibility:hidden after the doors have finished sliding. */
 .entry--hidden {
-  opacity: 0;
-  transform: scale(1.25);
-  visibility: hidden;
   pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0s linear 1.85s;
 }
 
+/* ---------- The parting doors ---------- */
+.entry__panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 1;
+  background: linear-gradient(180deg, #1b0b10 0%, #0a0406 100%);
+  transition: transform 1.6s cubic-bezier(0.77, 0, 0.18, 1) 0.25s;
+  will-change: transform;
+}
+.entry__panel--left {
+  left: 0;
+  border-right: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow: inset -2px 0 18px -6px rgba(212, 175, 55, 0.55);
+}
+.entry__panel--right {
+  right: 0;
+  border-left: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow: inset 2px 0 18px -6px rgba(212, 175, 55, 0.55);
+}
+.entry--hidden .entry__panel--left { transform: translateX(-100%); }
+.entry--hidden .entry__panel--right { transform: translateX(100%); }
+
+/* ---------- Corner ornaments (fade before the doors open) ---------- */
 .entry__corner {
   position: absolute;
   width: 48px;
   height: 48px;
+  z-index: 2;
   border-color: rgba(212, 175, 55, 0.55);
   pointer-events: none;
+  transition: opacity 0.5s ease;
 }
+.entry--hidden .entry__corner { opacity: 0; }
 .entry__corner--tl { top: 28px; left: 28px; border-top: 1px solid; border-left: 1px solid; }
 .entry__corner--tr { top: 28px; right: 28px; border-top: 1px solid; border-right: 1px solid; }
 .entry__corner--bl { bottom: 28px; left: 28px; border-bottom: 1px solid; border-left: 1px solid; }
 .entry__corner--br { bottom: 28px; right: 28px; border-bottom: 1px solid; border-right: 1px solid; }
 
+/* ---------- Centred welcome content ---------- */
 .entry__inner {
+  position: relative;
+  z-index: 2;
   max-width: 40rem;
-  animation: entryFadeUp 1.2s ease both;
+  animation: entryFadeUp 1.2s ease;
   transition:
-    opacity 1.3s ease,
-    transform 1.9s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.55s ease,
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform;
 }
-
-/* The names/button zoom toward the viewer (faster than the veil) as it clears. */
+/* Content recedes first, clearing the stage before the doors draw back. */
 .entry--hidden .entry__inner {
   opacity: 0;
-  transform: scale(1.45);
+  transform: translateY(-14px) scale(0.97);
 }
 
 .entry__eyebrow {
@@ -131,7 +154,7 @@
   animation: entryPulse 2.8s ease-in-out 1.2s infinite;
 }
 
-/* Tactile press — the button dips on click before the veil lifts. */
+/* Tactile press — the button dips on click before the doors open. */
 .entry__btn:active {
   transform: scale(0.94);
 }
@@ -172,9 +195,16 @@
   .entry__btn { padding: 0.9rem 2.5rem; letter-spacing: 0.3em; }
 }
 
+/* Sliding doors can be disorienting — fall back to a simple fade. */
 @media (prefers-reduced-motion: reduce) {
-  .entry, .entry__inner, .entry__btn {
-    animation-duration: 0.001s !important;
-    transition-duration: 0.001s !important;
+  .entry__panel {
+    transition: opacity 0.4s ease !important;
+    transform: none !important;
   }
+  .entry--hidden .entry__panel { transform: none !important; opacity: 0; }
+  .entry__inner, .entry__corner, .entry__btn {
+    animation: none !important;
+    transition-duration: 0.4s !important;
+  }
+  .entry--hidden { transition: visibility 0s linear 0.4s; }
 }
